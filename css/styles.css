@@ -18,3 +18,12 @@ img {
     width: 360px;
     height: auto;
 }
+
+.gallery a:hover {
+    cursor: url('../img/hand.svg'), pointer;
+}
+
+
+.gallery-image:hover {
+    transform: scale(1.04);
+}
