@@ -27,3 +27,9 @@ img {
 .gallery-image:hover {
     transform: scale(1.04);
 }
+
+
+.modal-view img {
+    width: 1112px;
+    height: 640px;
+}
