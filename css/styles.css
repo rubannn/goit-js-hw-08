@@ -1,3 +1,9 @@
+:root {
+    --color-white: white;
+    --btn-color: #2999d0;
+    --btn-close-color: #ff0077;
+}
+
 ul,
 ol {
     list-style: none;
@@ -32,4 +38,90 @@ img {
 .modal-view img {
     width: 1112px;
     height: 640px;
+}
+
+
+.modal-view {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.modal-image {
+    display: block;
+
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: transform 0.2s;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+    color: var(--btn-close-color);
+}
+
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px;
+    background: none;
+
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+    user-select: none;
+}
+
+.nav-btn:hover {
+    color: var(--btn-color);
+    transform: translateY(-50%) scale(1.2);
+}
+
+.nav-btn.prev {
+    left: -70px;
+}
+
+.nav-btn.next {
+    right: -70px;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Счётчик под картинкой */
+.counter {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    user-select: none;
 }
