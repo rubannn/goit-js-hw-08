@@ -1,6 +1,6 @@
 import { images } from './gallery-items.js';
 
-const galeryList = document.querySelector('.gallery');
+const galleryList = document.querySelector('.gallery');
 
 const galleryItems = images.map(
     image =>
@@ -14,11 +14,11 @@ const galleryItems = images.map(
         </li>`
 );
 
-galeryList.insertAdjacentHTML('beforeend', galleryItems.join(''));
+galleryList.insertAdjacentHTML('beforeend', galleryItems.join(''));
 
 let currentLightbox = null;
 
-galeryList.addEventListener('click', event => {
+galleryList.addEventListener('click', event => {
     event.preventDefault();
 
     const clickedImage = event.target;
