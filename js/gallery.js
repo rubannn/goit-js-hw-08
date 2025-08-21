@@ -1,6 +1,4 @@
 import { images } from './gallery-items.js';
-// import SimpleLightbox from "simplelightbox";
-// import "simplelightbox/dist/simple-lightbox.min.css";
 
 const galeryList = document.querySelector('.gallery');
 
@@ -18,19 +16,39 @@ const galleryItems = images.map(
 
 galeryList.insertAdjacentHTML('beforeend', galleryItems.join(''));
 
+let currentLightbox = null;
+
 galeryList.addEventListener('click', event => {
     event.preventDefault();
 
     const clickedImage = event.target;
-    console.log(clickedImage.nodeName);
 
     if (clickedImage.nodeName !== 'IMG') {
         return;
     }
 
+    if (currentLightbox && currentLightbox.visible()) {
+        currentLightbox.close();
+        currentLightbox = null;
+        return;
+    }
+
     const imgURL = clickedImage.dataset.source;
     const innerHTML = `<div class="modal-view"><img src="${imgURL}"></div>`;
-    const lightBox = basicLightbox.create(innerHTML);
+    const lightBox = basicLightbox.create(innerHTML, {
+        onShow: instance => {
+            currentLightbox = instance;
+            instance
+                .element()
+                .querySelector('img')
+                .addEventListener('click', () => {
+                    instance.close();
+                });
+        },
+        onClose: instance => {
+            currentLightbox = null;
+        },
+    });
 
     lightBox.show();
 });
